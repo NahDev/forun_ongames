@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Post List</h2>
+  {% for post in posts %}
+    <div>
+      <p>Subject: {{ post.subject }}</p>
+      <p>User: {{ post.user }}</p>
+      <p>Category: {{ post.category }}</p>
+      <p>Created at: {{ post.created_at }}</p>
+      <p>Message: {{ post.message }}</p>
+      <img src="{{ post.image.url }}" alt="Post Image">
+      <hr>
+    </div>
+  {% endfor %}
+{% endblock %}
