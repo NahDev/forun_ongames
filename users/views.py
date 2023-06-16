@@ -1,25 +1,23 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .forms import PostForm
 from .models import Post
 
 
-class PostListView(ListView):
-    model = Post
-    template_name = "users/post_list.html"
-    context_object_name = "posts"
+@login_required
+def create_post(request):
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            return redirect("post_list")
+    else:
+        form = PostForm()
+    return render(request, "forum_app/create_post.html", {"form": form})
 
 
-class PostDetailView(DetailView):
-    model = Post
-    template_name = "users/post_detail.html"
-    context_object_name = "post"
-
-
-class PostCreateView(CreateView):
-    model = Post
-    template_name = "users/post_create.html"
-    fields = ["category", "title", "content", "image"]
-
-
-def LoginUser(request):
-    render(request, "accounts/login.html")
+def post_list(request):
+    posts = Post.objects.all()
+    return render(request, "forum_app/post_list.html", {"posts": posts})
