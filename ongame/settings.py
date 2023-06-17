@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "users",
-
-
     # providers
     "allauth.socialaccount.providers.google",
 ]
@@ -125,7 +123,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -138,5 +135,18 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/users'  # Redirecionar para a página inicial após o login
+LOGIN_REDIRECT_URL = "/"  # Redirecionar para a página inicial após o login
 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "/static/"
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+
+# STATICFILES_DIRS = "os.path.join(B
+# ASE_DIR, 'static')"

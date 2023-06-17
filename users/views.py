@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
 from .models import Post
@@ -12,12 +12,12 @@ def create_post(request):
             post = form.save(commit=False)
             post.user = request.user
             post.save()
-            return redirect("post_list")
+            return render(request, "post_list.html")
     else:
         form = PostForm()
-    return render(request, "forum_app/create_post.html", {"form": form})
+    return render(request, "create_post.html", {"form": form})
 
 
 def post_list(request):
     posts = Post.objects.all()
-    return render(request, "forum_app/post_list.html", {"posts": posts})
+    return render(request, "post_list.html", {"posts": posts})
