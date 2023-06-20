@@ -1,0 +1,314 @@
+/* Estilos para o fórum Ongames */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap');
+
+:root {
+  --cor-primaria: #e10000;
+  --cor-secundaria: #592222;
+  --cor-terciaria: #fdba0051;
+  --cor-postagens-impares: #f2f2f2;
+  --cor-postagens-pares: #9c9b9b;
+  --cor-background-header: orange;
+  --cor-texto-header: #fff;
+  --cor-sombra-header: rgba(255, 128, 0, 0.459);
+}
+
+body {
+  font-family: 'EB Garamond', serif;
+  margin-top: 60px;
+  padding: auto;
+  background-color: var(--cor-secundaria);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  max-width: auto;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--cor-primaria);
+  margin-top: 56px;
+  text-shadow: 3px 3px 5px rgb(255, 132, 0);
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p {
+  margin-bottom: 10px;
+  text-align: initial;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+/* ajustes de layout */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.439);
+}
+
+.header-container {
+  background-color: var(--cor-background-header);
+  box-shadow: 0px 0px 14px 10px var(--cor-sombra-header);
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 98%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  z-index: 9999;
+  border-radius: 15px;
+  font-size: 30px;
+  
+}
+
+.header-container img {
+  max-width: 200px;
+  height: auto;
+}
+
+.header-container ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.header-container li {
+  margin-left: 10px;
+}
+
+.header-container a {
+  color: var(--cor-texto-header);
+  text-shadow: 3px 3px 5px rgb(100, 52, 0);
+}
+
+
+
+.header-container:hover {
+  animation: suave 0.5s;
+}
+
+.dropdown:hover {
+  animation: suave 0.5s;
+}
+
+@keyframes suave {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translateY(-5px);
+  }
+}
+
+
+
+.nav-bar a:hover {
+  animation-name: minhaAnimacao;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes minhaAnimacao {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 
+/* 
+.dropdown {
+  position: relative;
+  display: inline-block;
+  font-size: 30px;
+} */
+.dropdown-button {
+  background-color: var(--cor-background-header);
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #ffffff;
+  text-shadow: 3px 3px 5px rgb(100, 52, 0);
+  font-size: 34px;
+  font-family: 'EB Garamond', serif;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgb(255, 196, 0);
+  z-index: 1;
+  border-radius: 5px;
+  opacity: 0;
+  transition: transform 0.6s ease-in-out, opacity 0.3s ease-in-out;
+  transform: translateY(-10px);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.dropdown-content a {
+  color: #000;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+
+.postagem {
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0px -1px 16px 2px rgb(255, 128, 0);
+  margin-bottom: 20px;
+}
+
+.postagem p:nth-child(1),
+.postagem p:nth-child(3),
+.postagem p:nth-child(4) {
+  font-weight: bold;
+}
+
+.postagem p:nth-child(6) {
+  background-color: var(--cor-terciaria);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: inset 1px 5px 4px rgba(99, 63, 0, 0.481);
+}
+
+.postagem:nth-child(odd) {
+  background-color: var(--cor-postagens-impares);
+}
+
+.postagem:nth-child(even) {
+  background-color: var(--cor-postagens-pares);
+}
+
+/* Estilos específicos para usuários autenticados */
+.user-authenticated {
+  background-color: #e6f7ff;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.user-authenticated p {
+  font-weight: bold;
+}
+
+/* cards das páginas */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 400px;
+  background-color: #f7f7f7;
+  text-align: center;
+}
+
+.socialaccount_providers {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.socialaccount_ballot img {
+  max-width: 20px;
+}
+
+.login-or {
+  margin: 10px 0;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+  width: 96%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+.button.secondaryAction {
+  background-color: #8d81d1;
+  margin-right: 10px;
+}
+
+.button.primaryAction {
+  background-color: #007bff;
+}
+
+.button.primaryAction:hover {
+  background-color: #0056b3;
+}
+
+form {
+  margin-top: 20px;
+}
+
+button[type="submit"] {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #196400;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #c40000;
+}

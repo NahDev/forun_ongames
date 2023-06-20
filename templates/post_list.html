@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  <h1>Fórum OnGames</h1>
+  {% for post in posts %}
+    <a href="{% url 'forum_app:post_detail' post.pk %}">
+      <div class="postagem">
+          <p>Título: {{ post.subject }}</p>
+          <p>Usuário: {{ post.user }}</p>
+          <p>Categoria: {{ post.category }}</p>
+          <p>Postado: {{ post.created_at }}</p>
+          <p>Mensagem:</p>
+          <p>{{ post.message }}</p>
+          {% if post.image %}
+          <img src="{{ post.image.url }}" alt="Post Image">
+          {% endif %}
+          <hr>
+        </div>
+    </a>
+  {% endfor %}
+{% endblock %}

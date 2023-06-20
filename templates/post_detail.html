@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="postagem">
+
+  <h1>{{ post.subject }}</h1>
+  <p>{{ post.message }}</p>
+
+  <h2>Comentários</h2>
+  {% for comment in comments %}
+    <div class="comment">
+      <p>{{ comment.message }}</p>
+      <p>Por: {{ comment.user.username }}</p>
+      <p>Data: {{ comment.created_at }}</p>
+    </div>
+  {% empty %}
+    <p>Nenhum comentário ainda.</p>
+  {% endfor %}
+
+  <h2>Adicionar Comentário</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+  {% endblock %}

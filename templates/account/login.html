@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load i18n %}
+{% comment %} {% load 'static' %} {% endcomment %}
+{% load account socialaccount %}
+
+{% comment %} <link rel="stylesheet" href="{% static 'style.css' %} {% endcomment %}
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<div class="card">
+  <h1>{% trans "Sign In" %}</h1>
+  
+  {% get_providers as socialaccount_providers %}
+  
+  {% if socialaccount_providers %}
+  <p>{% blocktrans with site.name as site_name %}Por favor, faça login com uma das suas contas de terceiros existentes. Ou, <a href="{{ signup_url }}">cadastre-se</a> para uma conta {{ site_name }} e faça login abaixo:{% endblocktrans %}</p>
+  <div class="socialaccount_ballot">
+      <ul class="socialaccount_providers">
+        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+        <li class="google-provider">
+          <a href="{% provider_login_url 'google' %}">
+            <img src= {% static "google-icon.png" %} alt="Google Icon" />
+            {% trans "Entrar com o Google" %}
+          </a>
+        </li>
+      </ul>
+      
+      <div class="login-or">{% trans 'or' %}</div>
+    </div>
+    
+    {% include "socialaccount/snippets/login_extra.html" %}
+    
+  {% else %}
+    <p>{% blocktrans %}If you have not created an account yet, then please
+      <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+  {% endif %}
+  
+  <form class="login" method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+    <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+  </form>
+
+  <a href="{% url 'forum_app:post_list_by_category' 1 %}">Clique aqui para ir para a categoria 1</a>
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+/* Estilos para o fórum Ongames */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap');
+
+body {
+    font-family: 'EB Garamond', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+    max-width: 600px;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #e10000;
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #ccc;
+  }
+  /* ajustes de layout */
+  img {
+    max-width: 200px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.439);
+
+  }
+  .postagem {
+    border-radius: 15px;
+    padding: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.439);
+    margin: 10px;
+  }
+  
+  .postagem:nth-child(odd) {
+    background-color: #F2F2F2; /* Cor das postagens ímpares */
+  }
+  
+  .postagem:nth-child(even) {
+    background-color: #9c9b9b; /* Cor das postagens pares */
+  }
+  
+  
+  /* Estilos específicos para usuários autenticados */
+  
+  .user-authenticated {
+    background-color: #e6f7ff;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .user-authenticated p {
+    font-weight: bold;
+  }
+  
+  /* styles.css */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.header-container strong {
+  margin-right: 10px;
+}
+
+.header-container ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.header-container li {
+  margin-right: 10px;
+}
+
+.header-container a {
+  text-decoration: none;
+  color: #000;
+}
