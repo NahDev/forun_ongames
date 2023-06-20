@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <h1>Fórum</h1>
+  {% for post in posts %}
+    <div>
+      <p>Título: {{ post.subject }}</p>
+      <p>Usuário: {{ post.user }}</p>
+      <p>Categoria: {{ post.category }}</p>
+      <p>Postado: {{ post.created_at }}</p>
+      <p>Mensagem: {{ post.message }}</p>
+      {% if post.image %}
+        <img src="{{ post.image.url }}" alt="Post Image">
+      {% endif %}
+      <hr>
+    </div>
+  {% endfor %}
+{% endblock %}
